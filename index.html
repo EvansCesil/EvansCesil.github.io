@@ -8,31 +8,70 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <script src="script.js"></script>
 <script src="jquery.js"></script>
-<!-- Version 1.0.0-->
+<!-- Version 0.1.0-->
 
 </head>
 <body>
+
 <!--menu & header-->
-<div id="head"><a id="menu" onclick="openNav()" align=center>&#9776;</a> <img src="logo.png" height=48px width=48px id="logo"></img> <a id="headtext"> UnitedSites</a></div>
+<div id="head"><a id="menu" onclick="openNav()" align=center>&#9776;</a><img src="https://i.ibb.co/wcqswWs/logo.png" alt="logo" height=48px width =48px id="logo"><a id="headtext"> UnitedSites</a></div>
 
 <!--create sidenav-->
 <div id="mySidenav" class="sidenav">
-  <a href="javascript:void(0)" id="closebtn" class="closebtn" onclick="closeNav()">&times;</a>
-    <a id="elec">Electronics <i class="fa fa-caret-right" style="padding-left:60px"></i></a>
-    <a id="el">Electricity</a>
-    <a id="eq">Equation Solver</a>
-    <a id="pr">Programmer</a>
-    <a id="tr">Trajectory</a>
-    <hr id="sep" style="width:80%;align:center">
-    <a id="ab">About</a>
-    <a id="con">Contact</a>
+  <a href="javascript:void(0)" id="closebtn" class="closebtn" 
+
+onclick="closeNav()">&times;</a>
+    <div id="items">
+        <a id="home" class="a active" style="font-size:23px;margin-bottom:8px" onclick=""><i class="fa fa-home"></i> Home</a>
+        <a id="elec" class="a" onclick="drop('elec', 'elec_content')">Electronics<i id="fa-elec" class="fa fa-caret-right" style="padding-left:70px"></i></a>
+        <div id="elec_content" class="drop">
+            <a id="ohms" onclick = "ohm()">Ohm's Law</a>
+            <a id="res">Resistor Color Code</a>
+            <a id="volt_div">Voltage Divider</a>
+        </div>
+        <a id="eq" class="a" onclick="topNav('eq', 'eq_content')">Equation Solver</a>
+        <a id="pr" class="a" onclick="topNav('eq', 'eq_content')">Programmer</a>
+        <a id="tra" class="a" onclick="topNav('eq', 'eq_content')">Trajectory</a>
+        <hr id="sep" style="width:75%;margin-left:32px">
+        <a id="ab" class="a" onclick="topNav('eq', 'eq_content')">About</a>
+        <a id="con" class="a" onclick="topNav('eq', 'eq_content')">Contact</a>
+    </div>
+</div>
+<div id="h_content" class="topnav" style="display:none">
+ 
 </div>
 
-<div id="elec_content" style="visibility:hidden">
+<div id="ohm_content" class="content" style="margin-left:20px;display:block">
+  <b class="cont_head">Ohm's Law Calculator</b><br>
+  <i>Enter <b>any two</b> known values and press "Calculate" to solve for others</i>
+  <p>
+  Voltage (V) <br>
+  <input id="volt" placeholder="voltage" type="NUMBER" min="0" class = "inp" step="any" onchange ="check(this.id)"/> Volts (V)</p>
+  <p>
+  Current (I) <br>
+  <input id="amp" placeholder="current" type="NUMBER" min="0" class = "inp" step="any" onchange ="check(this.id)"/> <select class="select" id="CurrentUnit">
+            <option value="1" selected="selected">Amps (A)</option>
+            <option value="0.001">Milliamps (mA)</option>
+        </select></p>
+  <p>
+  Resistance (R) <br>
+  <input id="ohm" placeholder="resistance" type="NUMBER" min="0" class = "inp to_calc" step="any" onchange ="check(this.id)"/> <select class="select" id="ResistanceUnit">
+            <option value="1"  selected="selected">Ohms (&Omega;)</option>
+            <option value="1000">Kilohms (k&Omega;)</option>
+            <option value="1000000">Megohms (m&Omega;)</option>
+        </select> </p>
+  <p>
+  Power (W) <br>
+  <input id="watt" placeholder="power" type="NUMBER" min="0" class ="inp to_calc" step="any" onchange ="check(this.id)"/> Watts (W)</p>
+  <p id ="para" style="display:none;color:red"><i>Check Your Input: Enter Two Fields, Do Not Input 0</i></p>
+  <button id="calc" class="btn" onclick="calculate_ohm()">Calculate</button>
+  <i style="font-size:12px">Click "Calculate" to update the fields with orange borders</i>
+  <br>
+  <p><span style="background-color:#FFCC00;border-radius:2px;color:white;height:7px;padding:3px">Formulae:</span>&nbsp; V = I * R<br><span class="formula">&nbsp; W = V * I</span></p>
 </div>
 
-<div id="footer" onclick="closeNav()">
+<footer id="footer" onclick="closeNav()">
+</footer>
 
-</div>
 </body>
-</html> 
+</html>
