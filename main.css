@@ -1,35 +1,38 @@
 body {
-  font-family: "Lato", "Arial", sans-serif;
+  font-family: "Lato", "Helvetica", "Arial", sans-serif;
   margin: 0;
   transition: margin-left .5s;
+  width: 100%;
+  height: 100%;
+  overflow-y: scroll;
+  position: relative;
 }
 
 #sep {
   border-color: #818181;
 }
 
-#menu, #head {
+#menu {
   width: 100%;
-  padding-bottom: 6px;
-  margin: 0;
+  position: relative;
+  margin: 0 6px 3px 12px;
+  padding: 3px 3px 6 px 3px;
   color: #f1f1f1;
   background-color: #111;
   font-size: 35px;
   cursor: pointer;
 }
 
-#menu {
-  position: relative;
-  margin-left: 12px;
-  margin-right: 6px;
-  margin-bottom: 3px;
-  padding: 3px;
-}
-
 #head {
+  width: 100%;
+  padding-bottom: 6px;
+  margin: 0;
+  color: #f1f1f1;
+  background-color: #111;
   position: fixed;
   cursor: default;
-  left: 0;
+  white-space: nowrap;
+  z-index: 1;
 }
 
 #logo {
@@ -44,14 +47,10 @@ body {
   left: 2px;
   top: 6px;
 }
-.active{
-  background-color: green;
-  color: #f1f1f1;
-}
 
-/* sidenav from w3schools.com */
+/* sidenav outline from w3schools.com */
 .sidenav {
-  height: 100%;
+  height: 100vh;
   width: 0;
   position: fixed;
   z-index: 1;
@@ -59,8 +58,15 @@ body {
   left: 0;
   background-color: #111;
   overflow-x: hidden;
+  overflow-y: scroll;
   transition: 0.5s;
-  padding-top: 60px;
+  padding-top: 64px;
+}
+
+/* do not make scroll bar visible in sidenav */
+.sidenav::-webkit-scrollbar {
+    width: 0;
+    background: transparent; /* make scrollbar transparent */
 }
 
 .sidenav a {
@@ -69,12 +75,17 @@ body {
   font-size: 25px;
   color: #818181;
   display: block;
-  transition: 0.3s;
+  white-space: nowrap;
+  cursor: pointer;
 }
 
 .sidenav a:hover {
   color: #f1f1f1;
-  background-color:green;
+}
+
+.sidenav .active {
+  color: #f1f1f1;
+  background-color: green;
 }
 
 #closebtn:hover {
@@ -91,12 +102,44 @@ body {
 }
 
 @media screen and (max-height: 450px) {
-  .sidenav {padding-top: 15px;}
+  .sidenav {padding-top: 22px;}
   .sidenav a {font-size: 18px;}
 }
 
+/* Add a black background color to the top navigation */
+.drop {
+  background-color: #333;
+  overflow: hidden;
+  position: relative;
+  display: none;
+}
+
+/* Style the links inside the navigation bar */
+.drop a {
+  display: block;
+  color: #f2f2f2;
+  text-align: left;
+  padding: 12px 14px 12px 32px;
+  text-decoration: none;
+  font-size: 17px;
+  cursor: pointer;
+}
+
+/* Change the color of links on hover */
+.drop a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+/* Add a color to the active/current link */
+.drop a.active {
+  background-color: #4CAF50;
+  color: white;
+}
+
 #footer {
-  position: absolute;
+  display: none;
+  position: fixed;
   bottom: 0;
   margin: 0;
   left: 0;
@@ -107,6 +150,87 @@ body {
   font-size: 12px;
   cursor: default;
   text-align: center;
-  transition: .8s
   /* footer height change with JS duration */
+}
+
+@media screen and (max-width:500px){
+    .sidenav {
+        transition: .8s;
+    }
+    
+    body {
+        transition: margin-left .8s;
+    }
+    
+    #headtext {
+        font-size: 18px;
+    }
+    
+    .drop a {
+        font-size: 12px;
+    }
+    
+}
+
+.content {
+    position: relative;
+    display: none;
+    top: 80px;
+}
+
+.inp {
+    height: 25px;
+    border: 1px solid #818181;
+    border-radius: 5px;
+}
+
+.inp:focus{
+    outline: #0066CC;
+    border-color: #0066CC;
+}
+
+.to_calc {
+    border-color: orange;
+}
+
+.select {
+    height: 27px;
+    width: 125px;
+    border-radius: 3px;
+}
+
+.select:focus {
+    outline: #818181;
+    border-color: #818181;
+}
+
+.cont_head {
+    font-size: 18px;
+}
+
+.btn {
+    border: 1px;
+    border-radius: 3px;
+    background-color: #0066CC;
+    padding: 5px;
+    color: white;
+    font-size: 17px;
+    width: 175px;
+    height: 30px;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background-color: #004D99;
+    outline: #004D99;
+    border-color: #004D99;
+}
+
+.formula {
+    margin-left: 83px;
+}
+
+.disabled,  .disabled:hover, .disabled:focus {
+    cursor: no-drop;
+    background-color: #4D9DFF;
 }
